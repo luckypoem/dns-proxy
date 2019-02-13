@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dns-proxy
+  labels:
+    name: dns-proxy
+spec:
+  selector:
+    matchLabels:
+      name: dns-proxy
+  template:
+    metadata:
+      labels:
+        name: dns-proxy
+    spec:
+      hostNetwork: true
+      containers:
+      - name: dns-proxy
+        image: jonathanbeber/dns-proxy:0.1.0
+        resources:
+          limits:
+            cpu: 100m
+            memory: 300Mi
+          requests:
+            cpu: 100m
+            memory: 300Mi
+        env:
+        - name: DNS_PROXY_UPSTREAM_SERVER
+          value: "1.1.1.1"
+        ports:
+        - name: tcp-dns
+          containerPort: 53
+          hostPort: 53
+        - name: udp-dns
+          containerPort: 53
+          hostPort: 53
+          protocol: UDP
