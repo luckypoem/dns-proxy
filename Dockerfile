@@ -8,7 +8,7 @@ WORKDIR /go/src/github.com/jonathanbeber/dns-proxy
 
 COPY . .
 
-RUN apk add curl && \
+RUN apk add curl git && \
     curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh && \
     dep ensure && \
     CGO_ENABLED=0 go build -o /go/bin/dns-proxy
