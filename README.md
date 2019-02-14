@@ -71,13 +71,13 @@ DNS-proxy supports the following environment variable as configuration:
 
 ## Security concerns
 
-DNS proxy enables encrypted connection to upstream  DoT servers, but all the traffic until the service, including its responses to clients still not secure. When using it, you will have to ensure that all the communication between your client and this service is secure. For example, if you host this service in a public address and your DNS client points to it over public internet access, you can be a victim of a [man in the middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack). This service usage on a controlled network environment increases the security level.
+DNS proxy enables encrypted connection to upstream DoT servers, but all the traffic until this service, including its responses to clients, still not secure. When using it, you will have to ensure that all the communication between your client and this service is secure. For example, if you host this service in a public address and your DNS client points to it over public internet access, you can be a victim of a [man in the middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack). The usage of this service on a controlled network environment increases the security level.
 
 ## Usage examples
 
 ### Localhost
 
-It's possible to secure all DNS traffic that relies on the system DNS resolver configuration. Usually, all the process running on a system follow the configuration defined by this file to find the DNS server to make requests. Running this service locally and configuring the system's DNS config to localhost (`127.0.0.1`) all the DNS operations will be encrypted once it leaves the local machine network layer. Look at the following diagram:
+It's possible to secure all DNS traffic that relies on the system DNS resolver configuration. Usually, all the process running on a system follow the configuration defined by this file to find the DNS server to make requests. Running this service locally and configuring the system's DNS config to localhost all the DNS operations will be encrypted once it leaves the local machine network layer. Look at the following diagram:
 
 ```
  +---------------------------------+
